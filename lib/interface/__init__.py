@@ -1,3 +1,34 @@
+def cores(msg='',cor='white',fundo='none'): 
+    fundos = {'black':'\033[1;40m',
+              'red':'\033[1;41m', 
+              'green':'\033[1;42m',
+              'yellow':'\033[1;43m',
+              'blue':'\033[1;44m',
+              'purple':'\033[1;45m',
+              'cyan':'\033[1;46m'}  
+    fontes = {'black':'\033[30m',
+              'red':'\033[31m',
+              'green':'\033[32m',
+              'yellow':'\033[33m',
+              'blue':'\033[34m',
+              'purple':'\033[35m',
+              'cyan':'\033[36m'}
+    try:
+        if cor != 'white':       
+            msgcor = fontes[cor] + msg + '\033[m'
+            if fundo != 'none':
+                msgfundo = fundos[fundo] + msgcor + '\033[m'
+        else: msgfundo = fundos[fundo] + msg + '\033[m'
+        
+    except (ValueError, TypeError):
+            print('\033[31mErro: entrada inválida, utilize o nome da cor entre '' e em inglês, confira a lista das 7 cores disponíveis.\033[m')
+    else: 
+        if fundo == 'none':
+            return msgcor
+        else:
+            return msgfundo
+
+
 def lerInt (msg):
     '''Função que recebe um texto para personalização do input e verifica se a entrada é um inteiro ou não
     entrada: msg -> mensagem personalizada para o input
@@ -7,9 +38,9 @@ def lerInt (msg):
         try:
             n = int(input(msg))
         except (ValueError, TypeError):
-            print('\022[33mErro: entrada inválida, por favor digite um número inteiro válido.\033[m')
+            print(cores('Erro: entrada inválida, por favor digite um número inteiro válido.','red'))
         except (KeyboardInterrupt):
-            print('\033[31mERRO: usuário não informou o número\033[m')
+            print(cores('ERRO: usuário não informou o número.','red'))
             return 0
         else:
             return n
@@ -45,37 +76,4 @@ def menu(lista):
         c += 1
     print(linha())
     opc = lerInt('\033[33mSua Opção: \033[m')
-    return opc
-
-
-def cores(msg='',cor='white',fundo='none'): 
-    fundos = {'black':'\033[1;40m',
-              'red':'\033[1;41m', 
-              'green':'\033[1;42m',
-              'yellow':'\033[1;43m',
-              'blue':'\033[1;44m',
-              'purple':'\033[1;45m',
-              'cyan':'\033[1;46m'}  
-    fontes = {'black':'\033[30m',
-              'red':'\033[31m',
-              'green':'\033[32m',
-              'yellow':'\033[33m',
-              'blue':'\033[34m',
-              'purple':'\033[35m',
-              'cyan':'\033[36m'}
-    try:
-        if cor != 'white':       
-            msgcor = fontes[cor] + msg + '\033[m'
-            if fundo != 'none':
-                msgfundo = fundos[fundo] + msgcor + '\033[m'
-        else: msgfundo = fundos[fundo] + msg + '\033[m'
-        
-    except (ValueError, TypeError):
-            print('\022[33mErro: entrada inválida, utilize o nome da cor entre '' e em inglês, confira a lista das 7 cores dosponíveis.\033[m')
-    else: 
-        if fundo == 'none':
-            return msgcor
-        else:
-            return msgfundo
-
-    
+    return opc  
