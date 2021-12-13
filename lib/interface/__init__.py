@@ -1,4 +1,10 @@
 def cores(msg='',cor='white',fundo='none'): 
+    """Função que recebe uma mensagem e de acordo com outros 2 parâmetros, atribui cores para a fonte da mensagem e para o fundo. Caso não seja informada a cor da fonte, o padrão é atribuir branco. Caso não seja informada a cor de fundo, o padrão é não aplicar cor de fundo.
+    msg: mensagem que o usuário pretende atribuir cores.
+    cor: parâmetro que informa a cor que se pretende aplicar à mensagem, deve ser o nome da cor em inglês, as cores podem ser: black, red, green, yellow, blue, purple ou cyan.
+    fundo: parâmetro que informa a cor que se pretende aplicar ao fundo da mensagem, as cores devem ser informadas em inglês e podem ser: black, red, green, yellow, blue, purple ou cyan.
+    return: retorna a mensagem com as transformações que foram informadas. 
+    """
     fundos = {'black':'\033[1;40m',
               'red':'\033[1;41m', 
               'green':'\033[1;42m',
@@ -30,10 +36,10 @@ def cores(msg='',cor='white',fundo='none'):
 
 
 def lerInt (msg):
-    '''Função que recebe um texto para personalização do input e verifica se a entrada é um inteiro ou não
+    """Função que recebe um texto para personalização do input e verifica se a entrada é um inteiro ou não
     entrada: msg -> mensagem personalizada para o input
     return: retorna o numero convertido para inteiro ou 0 caso seja interrompido
-    '''
+    """
     while True:
         try:
             n = int(input(msg))
@@ -47,10 +53,10 @@ def lerInt (msg):
 
 
 def linha (tamanho=42):
-    '''Função para criar uma linha com o tamanho especificado na entrada
+    """Função para criar uma linha com o tamanho especificado na entrada
     entrada: tamanho-> define o tamanho da linha a ser construida, por default é 42
     return: retorna a linha construida
-    '''
+    """
     return '-' * tamanho
 
 
